@@ -1,13 +1,10 @@
-
 public class GoodBeast extends Entity {
-	final static int energy = 200;
+	final static int ENERGY = 200;
 
-	public GoodBeast(int id,int x, int y) {
-		super(id, energy, x, y);
+	public GoodBeast(int id, XY xy) {
+		super(id, ENERGY, xy);
 	}
 
-	public String toString() {
-		return "GoodBeast mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten x: " + getX() + " y: "
-				+ getY();
+	public void updateEnergy(int delta) {
 	}
 }

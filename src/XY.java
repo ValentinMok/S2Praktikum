@@ -1,46 +1,42 @@
 final public class XY {
+	public final int x;
+	public final int y;
 
-	static Entity moveRight(Entity entity) {
-		entity.x++;
-		return entity;
+	public XY(int x, int y) {
+		this.x = x;
+		this.y = y;
 	}
 
-	static Entity moveLeft(Entity entity) {
-		entity.x--;
-		return entity;
+	public XY(XY xy) {
+		this.x = xy.x;
+		this.y = xy.y;
 	}
 
-	static Entity moveDown(Entity entity) {
-		entity.y++;
-		return entity;
+	public String toString() {
+		return "x: " + this.x + " y: " + this.y;
 	}
 
-	static Entity moveUp(Entity entity) {
-		entity.y--;
-		return entity;
+	public static XY addXy(XY xy1, XY xy2) {
+		int newx = xy1.x + xy2.x;
+		int newy = xy1.y + xy2.y;
+		return new XY(newx, newy);
 	}
 
-	static Entity moveUpRight(Entity entity) {
-		 entity.x++;
-		 entity.y--;
-		 return entity;
+	public static XY move(XY xy) {
+		XY vec = randomVec();
+		return addXy(xy, vec);
 	}
 
-	static Entity moveUpLeft(Entity entity) {
-		entity.x--;
-		entity.y--;
-		return entity;
+	public static XY randomVec() {
+		int i = (int) (Math.random() * 3) - 1;
+		int j = (int) (Math.random() * 3) - 1;
+		return new XY(i, j);
 	}
 
-	static Entity moveDownRight(Entity entity) {
-		entity.x++;
-		entity.y++;
-		return entity;
-	}
-
-	static Entity moveDownLeft(Entity entity) {
-		entity.x--;
-		entity.y++;
-		return entity;
+	public boolean equals(XY xy) {
+		if (this.x == xy.x && this.y == xy.y) {
+			return true;
+		}
+		return false;
 	}
 }

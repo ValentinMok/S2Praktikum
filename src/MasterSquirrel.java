@@ -1,13 +1,21 @@
-
-public class MasterSquirrel extends Entity {
-	
-	public MasterSquirrel(int id,int x,int y,int energy) {
-		super(id, energy, x, y);
+public class MasterSquirrel extends Squirrel {
+	public MasterSquirrel(int id, XY xy) {
+		super(id, 1000, xy);
 	}
-	
 
-	public String toString() {
-		return "MasterSquirrel mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten x: " + getX() + " y: "
-				+ getY();
+	public void nextStep() {
+	}
+
+	public MinniSquirrel createMinni(int energy) {
+		int id = Main.game.getnextId();
+		this.updateEnergy(-energy);
+		return new MinniSquirrel(id, energy, getXy(), getId());
+	}
+
+	public boolean isOwnMinni(MinniSquirrel ms) {
+		if (ms.getPid() == this.getId()) {
+			return true;
+		} else
+			return false;
 	}
 }

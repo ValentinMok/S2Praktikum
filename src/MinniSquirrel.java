@@ -1,13 +1,17 @@
+public class MinniSquirrel extends Squirrel {
+	private int parentId;
 
-public class MinniSquirrel extends Entity {
-	final static int id = 6;
-
-	public MinniSquirrel(int energy, int x, int y) {
-		super(id, energy, x, y);
+	public MinniSquirrel(int id, int energy, XY xy, int pid) {
+		super(id, energy, xy);
+		parentId = pid;
 	}
 
 	public String toString() {
-		return "MinniSquirrel mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten x: " + getX() + " y: "
-				+ getY();
+		return this.getClass() + " mit ID: " + getId() + " Energy: " + getEnergy() + " Koordinaten " + getXy()
+				+ " ParentID: " + parentId;
+	}
+
+	public int getPid() {
+		return parentId;
 	}
 }
